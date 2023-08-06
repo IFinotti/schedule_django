@@ -40,3 +40,9 @@ class ContactAdmin(admin.ModelAdmin):
 
     # Clicking on these, it takes you to the info about the contact
     list_display_links = ('id', 'phone')
+
+
+@admin.register(models.Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    ordering = ('-id',)

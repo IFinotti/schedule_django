@@ -118,12 +118,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
 STATICFILES_DIRS = (
     BASE_DIR / 'base_static',
 )
+STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static'  # collectstatic
+
+MEDIA_URL = 'media/'  # Archives sent by the user
+MEDIA_ROOT = BASE_DIR / 'media'  # Archives sent to the user
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+try:
+    from project.local_settings import *
+except ImportError:
+    ...

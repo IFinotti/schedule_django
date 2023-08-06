@@ -1,5 +1,6 @@
 from django.contrib import admin
 from contact import models
+
 # Register your models here.
 
 
@@ -7,23 +8,24 @@ from contact import models
 class ContactAdmin(admin.ModelAdmin):
     # Shows these fields in the top of the DB
     list_display = (
-        'id',
-        'first_name',
-        'last_name',
-        'phone',
+        "id",
+        "first_name",
+        "last_name",
+        "phone",
+        "show",
     )
 
     # Create a filter option
-    list_filter = ('created_date',)
+    list_filter = ("created_date",)
 
     # Sort contacts backwards based on id
-    ordering = ('-id',)
+    ordering = ("-id",)
 
     # A way to search the fields of any contact
     search_fields = (
-        'id',
-        'first_name',
-        'last_name',
+        "id",
+        "first_name",
+        "last_name",
     )
 
     # Maximum of contacts in a single page
@@ -34,15 +36,16 @@ class ContactAdmin(admin.ModelAdmin):
 
     # Set these fields as editable at the index of DB
     list_editable = (
-        'first_name',
-        'last_name',
+        "first_name",
+        "last_name",
+        "show",
     )
 
     # Clicking on these, it takes you to the info about the contact
-    list_display_links = ('id', 'phone')
+    list_display_links = ("id", "phone")
 
 
 @admin.register(models.Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name',)
-    ordering = ('-id',)
+    list_display = ("name",)
+    ordering = ("-id",)

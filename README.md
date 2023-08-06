@@ -27,7 +27,7 @@ Para executar o projeto localmente em sua máquina, siga os passos abaixo:
 
 2. **Clone o repositório:**
    ```
-   git clone https://github.com/seu-usuario/nome-do-repositorio.git
+   git clone https://github.com/IFinotti/schedule_django.git
    ```
 
 3. **Acesse o diretório do projeto:**

@@ -9,7 +9,7 @@ urlpatterns = [
 
     # contacts urls crud
     path("contact/<int:contact_id>/", views.contact, name="contact"),
+    path("contact/create/", views.create, name="create"),
     # path("contact/<int:contact_id>/update/", views.contact, name="contact"),
     # path("contact/<int:contact_id>/delete/", views.contact, name="contact"),
-    # path("contact/create/", views.contact, name="contact"),
 ]

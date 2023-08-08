@@ -12,7 +12,7 @@ class ContactForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={
                 'class': 'class-a class-b',
-                'placeholder': 'Here is the third way.'
+                'placeholder': 'Write your name.'
             }
         ),
         # label='Primeiro nome finotti',
@@ -33,6 +33,9 @@ class ContactForm(forms.ModelForm):
             'first_name',
             'last_name',
             'phone',
+            'email',
+            'description',
+            'category',
         )
 
         # widgets = {

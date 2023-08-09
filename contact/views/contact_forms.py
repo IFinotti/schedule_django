@@ -12,7 +12,7 @@ def create(request):
     form_action = reverse('contact:create')
     # It shows the sent data if the method is POST
     if request.method == 'POST':
-        form = ContactForm(data=request.POST)
+        form = ContactForm(data=request.POST, files=request.FILES)
         context = {
             'form': form,
             'form_action': form_action,
@@ -47,7 +47,8 @@ def update(request, contact_id):
     # If the method is post, the data just mantains there, and we sent the instance
     # to update the contact
     if request.method == 'POST':
-        form = ContactForm(data=request.POST, instance=contact)
+        form = ContactForm(data=request.POST,
+                           files=request.FILES, instance=contact)
         context = {
             'form': form,
             'form_action': form_action,

@@ -8,24 +8,13 @@ from contact import models
 
 
 class ContactForm(forms.ModelForm):
-    first_name = forms.CharField(
-        widget=forms.TextInput(
+    picture = forms.ImageField(
+        widget=forms.FileInput(
             attrs={
-                'class': 'class-a class-b',
-                'placeholder': 'Write your name.'
+                'accept': 'image/*',
             }
-        ),
-        # label='Primeiro nome finotti',
-        help_text='A help text.'
+        )
     )
-
-    # def __init__(self, *args, **kwargs) -> None:
-    #     super().__init__(*args, **kwargs)
-
-    #     self.fields['first_name'].widget.attrs.update({
-    #         'class': 'class-a class-b',
-    #         'placeholder': 'Write your name here.'
-    #     })
 
     class Meta:
         model = models.Contact
@@ -36,16 +25,9 @@ class ContactForm(forms.ModelForm):
             'email',
             'description',
             'category',
-        )
+            'picture',
 
-        # widgets = {
-        #     'first_name': forms.TextInput(
-        #         attrs={
-        #             'class': 'class-a class-b',
-        #             'placeholder': 'Write your name here.'
-        #         }
-        #     )
-        # }
+        )
 
     # Here you return the super and the clean. It can be used with more than one field at once
 

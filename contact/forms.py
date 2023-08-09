@@ -1,13 +1,12 @@
-from typing import Any, Dict, Mapping, Optional, Type, Union
 from django.core.exceptions import ValidationError
 from django import forms
-from django.core.files.base import File
-from django.db.models.base import Model
-from django.forms.utils import ErrorList
 from contact import models
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 
 class ContactForm(forms.ModelForm):
+
     picture = forms.ImageField(
         widget=forms.FileInput(
             attrs={
@@ -59,3 +58,34 @@ class ContactForm(forms.ModelForm):
             )
 
         return first_name
+
+
+class RegisterForm(UserCreationForm):
+    first_name = forms.CharField(
+        required=True,
+        min_length=3,
+    )
+    last_name = forms.CharField(
+        required=True,
+        min_length=3,
+    )
+    email = forms.EmailField()
+
+    class Meta:
+        model = User
+        fields = (
+            'first_name', 'last_name', 'email', 'username', 'password1', 'password2'
+        )
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+
+        if User.objects.filter(email=email).exists():
+            self.add_error(
+                'email',
+                ValidationError(
+                    'E-mail already exists.',
+                    code='invalid'
+                )
+            )
+        return email

@@ -28,7 +28,7 @@ def register(request):
 def update_view(request):
     form = RegisterUpdateForm(instance=request.user)
 
-    if form.method != 'POST':
+    if request.method != 'POST':
         return render(
             request, 'contact/user_update.html', {
                 'form': form,

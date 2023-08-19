@@ -95,11 +95,11 @@ def delete(request, contact_id):
         contact.delete()
         return redirect('contact:index')
 
-    return (
+    return render(
         request,
         'contact/contact.html',
         {
             'contact': contact,
-            'confirmation': confirmation
+            'confirmation': confirmation,
         }
     )

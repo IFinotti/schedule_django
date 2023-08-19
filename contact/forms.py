@@ -34,8 +34,8 @@ class ContactForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = self.cleaned_data
-        first_name = cleaned_data.get('first-name')
-        last_name = cleaned_data.get('first-name')
+        first_name = cleaned_data.get('first_name')
+        last_name = cleaned_data.get('last_name')
 
         if first_name == last_name:
             msg = ValidationError(
@@ -149,7 +149,7 @@ class RegisterUpdateForm(forms.ModelForm):
         if password1 or password2:
             if password1 != password2:
                 self.add_error('password2', ValidationError(
-                    'The passwords  are not the same'))
+                    'The passwords are not the same'))
 
         return super().clean()
 

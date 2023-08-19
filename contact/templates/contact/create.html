@@ -1,4 +1,6 @@
-{% extends 'global/base.html' %} {% block content %}
+{% extends 'global/base.html' %}
+<!--noqa-->
+{% block content %}
 <div class="form-wrapper">
   <h2>Contact</h2>
 
@@ -9,7 +11,9 @@
       {% for field in form %}
       <div class="form-group">
         <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-        {{ field }} {{ field.errors }} {% if field.help_text %}
+        {{ field }} {{ field.errors }}
+        <!--noqa-->
+        {% if field.help_text %}
         <p class="help-text">{{ field.help_text }}</p>
         {% endif %}
       </div>

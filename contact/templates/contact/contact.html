@@ -1,4 +1,6 @@
-{% extends 'global/base.html' %} {% block content %}
+{% extends 'global/base.html' %} 
+      <!--noqa-->
+{% block content %}
 <div class="single-contact">
   <h1 class="single-contact-name">
     {{contact.first_name}} {{contact.last_name}}
@@ -24,7 +26,9 @@
       >
 
       <form action="{% url 'contact:delete' contact.id %}" method="POST">
-        {% csrf_token %} {% if confirmation == 'no' %}
+        {% csrf_token %} 
+      <!--noqa-->
+        {% if confirmation == 'no' %}
         <input type="hidden" name="confirmation" value="yes" />
         <button class="btn btn-link btn-delete">Confirm</button>
 
